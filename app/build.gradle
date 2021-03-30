@@ -25,9 +25,6 @@ android {
         debug {
             applicationIdSuffix ".debug"
         }
-        jorge {
-
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
