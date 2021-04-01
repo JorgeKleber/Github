@@ -25,10 +25,13 @@ class SearchRepositoryInfrastructure : Callback<SearchResult> {
     }
 
     override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
+
         Log.d("TESTE","VICTOR")
+
     }
 
     override fun onFailure(call: Call<SearchResult>, t: Throwable) {
+
         Log.d("TESTE","VICTOR")
     }
 

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.dev.kleber.github.search.network.SearchRepositoryInfrastructure
+import com.dev.kleber.github.search.repository.SearchInfraRepository
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
 
-            SearchRepositoryInfrastructure().invoke()
+            SearchInfraRepository().invokeGitRepository()
         }
     }
 
