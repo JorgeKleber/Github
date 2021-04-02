@@ -6,8 +6,11 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.dev.kleber.github.search.network.SearchRepositoryInfrastructure
-import com.dev.kleber.github.search.repository.SearchInfraRepository
+import android.view.View
+import com.dev.kleber.github.search.repository.search.SearchRepository
+import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl
+import com.dev.kleber.github.search.repository.search.impl.local.SearchLocalRepositoryImpl
+import com.dev.kleber.github.search.repository.search.impl.remote.SearchRemoteRepositoryImpl
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +21,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        var local : SearchRepository = SearchLocalRepositoryImpl()
+        var remote : SearchRepository = SearchRemoteRepositoryImpl()
 
-            SearchInfraRepository().invokeGitRepository()
+        var impl = SearchRepositoryImpl(local, remote)
+
+        val function: (v: View) -> Unit = { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+
+            impl.searchRepo()
         }
+        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener(function)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
