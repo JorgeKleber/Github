@@ -1,17 +1,16 @@
 package com.dev.kleber.github
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.dev.kleber.github.search.network.ApiFactory
-import com.dev.kleber.github.search.repository.search.SearchRepository
 import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl
 import com.dev.kleber.github.search.repository.search.impl.local.SearchLocalRepositoryImpl
 import com.dev.kleber.github.search.repository.search.impl.remote.SearchRemoteRepositoryImpl
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
