@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.dev.kleber.github.search.network.ApiFactory
 import com.dev.kleber.github.search.repository.search.SearchRepository
 import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl
 import com.dev.kleber.github.search.repository.search.impl.local.SearchLocalRepositoryImpl
@@ -21,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        var local : SearchRepository = SearchLocalRepositoryImpl()
-        var remote : SearchRepository = SearchRemoteRepositoryImpl()
+        var local = SearchLocalRepositoryImpl()
+        var aux = ApiFactory()
+        var remote = SearchRemoteRepositoryImpl(aux.createSearchRepositoryAPI())
 
         var impl = SearchRepositoryImpl(local, remote)
 
