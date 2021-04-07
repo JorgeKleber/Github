@@ -4,7 +4,7 @@ import com.dev.kleber.github.search.data.SearchResult
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface SearchRepositoryService {
+interface SearchRepositoryAPI {
 
     @GET("search/repositories?q=language:Kotlin&sort=stars&page=1")
     fun searchRepositories() : Call<SearchResult>

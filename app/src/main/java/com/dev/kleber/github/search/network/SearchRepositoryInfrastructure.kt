@@ -19,16 +19,19 @@ class SearchRepositoryInfrastructure : Callback<SearchResult> {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service : SearchRepositoryService = retrofit.create(SearchRepositoryService::class.java)
+        val service : SearchRepositoryAPI = retrofit.create(SearchRepositoryAPI::class.java)
         service.searchRepositories().enqueue(this)
 
     }
 
     override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
+
         Log.d("TESTE","VICTOR")
+
     }
 
     override fun onFailure(call: Call<SearchResult>, t: Throwable) {
+
         Log.d("TESTE","VICTOR")
     }
 
