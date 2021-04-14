@@ -12,7 +12,7 @@ class ApiFactory {
             .baseUrl(BuildConfig.SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service : SearchRepositoryAPI = retrofit.create(SearchRepositoryAPI::class.java)
+        val service = retrofit.create(SearchRepositoryAPI::class.java)
         return service
     }
 }

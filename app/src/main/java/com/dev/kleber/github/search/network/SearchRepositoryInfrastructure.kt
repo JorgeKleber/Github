@@ -8,6 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.FormUrlEncoded
 
 
 class SearchRepositoryInfrastructure : Callback<SearchResult> {
@@ -20,7 +21,7 @@ class SearchRepositoryInfrastructure : Callback<SearchResult> {
             .build()
 
         val service : SearchRepositoryAPI = retrofit.create(SearchRepositoryAPI::class.java)
-        service.searchRepositories().enqueue(this)
+        service.searchRepositories("laguage:Kotlin", "stars",1).enqueue(this)
 
     }
 

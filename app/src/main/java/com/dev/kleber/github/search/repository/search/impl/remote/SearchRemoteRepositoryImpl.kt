@@ -15,7 +15,7 @@ class SearchRemoteRepositoryImpl(
 
     override fun searchRepo() {
 
-        service.searchRepositories().enqueue(this)
+        service.searchRepositories("language:c#", "stars",1).enqueue(this)
     }
 
     override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
