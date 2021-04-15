@@ -9,9 +9,8 @@ import retrofit2.http.Query
 
 interface SearchRepositoryAPI {
 
-    //@GET("search/repositories?q=language:Kotlin&sort=stars&page=1")
     @GET("search/repositories")
-    fun searchRepositories(@Query("q") q : String,
+    fun searchRepositories(@Query("q") query : String,
                            @Query("sort") sort : String,
                            @Query("page") page : Int) : Call<SearchResult>
 }
