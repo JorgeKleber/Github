@@ -13,9 +13,8 @@ class SearchRemoteRepositoryImpl(
     )
     : SearchRepository, Callback<SearchResult> {
 
-    override fun searchRepo() {
-
-        service.searchRepositories("language:c#", "stars",1).enqueue(this)
+    override fun searchRepo(language: String, sort: String, pageNumber: Int) {
+        service.searchRepositories(language, sort, pageNumber).enqueue(this)
     }
 
     override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
@@ -28,6 +27,5 @@ class SearchRemoteRepositoryImpl(
 
         Log.d("TESTE","VICTOR")
     }
-
 
 }
