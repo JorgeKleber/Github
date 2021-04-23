@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
-            impl.searchRepo("language:kotlin","stars", 1)
+            impl.searchRepo("language:kotlin","stars")
         }
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener(function)
     }

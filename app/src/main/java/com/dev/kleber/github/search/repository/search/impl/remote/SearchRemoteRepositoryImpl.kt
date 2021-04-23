@@ -1,6 +1,7 @@
 package com.dev.kleber.github.search.repository.search.impl.remote
 
 import android.util.Log
+import com.dev.kleber.github.search.callback.SearchRepoCallback
 import com.dev.kleber.github.search.data.SearchResult
 import com.dev.kleber.github.search.network.SearchRepositoryAPI
 import com.dev.kleber.github.search.repository.search.SearchRepository
@@ -11,21 +12,26 @@ import retrofit2.Response
 class SearchRemoteRepositoryImpl(
     private val service : SearchRepositoryAPI
     )
-    : SearchRepository, Callback<SearchResult> {
+    : SearchRepository {
 
-    override fun searchRepo(language: String, sort: String, pageNumber: Int) {
-        service.searchRepositories(language, sort, pageNumber).enqueue(this)
+
+
+    override fun searchRepo( language: String, sort: String, pageNumber: Int, callback : SearchRepoCallback ) {
+
+        service
+            .searchRepositories(language, sort, pageNumber)
+            .enqueue(object : Callback<SearchResult>{
+                override fun onResponse(
+                    call: Call<SearchResult>,
+                    response: Response<SearchResult>
+                ) {
+                    callback.success(response.body()?.list ?: emptyList())
+                }
+
+                override fun onFailure(call: Call<SearchResult>, t: Throwable) {
+                    callback.error()
+                }
+            } )
+
     }
-
-    override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
-
-        Log.d("TESTE","VICTOR")
-
-    }
-
-    override fun onFailure(call: Call<SearchResult>, t: Throwable) {
-
-        Log.d("TESTE","VICTOR")
-    }
-
 }
