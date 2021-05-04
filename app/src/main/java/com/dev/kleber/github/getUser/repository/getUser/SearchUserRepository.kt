@@ -1,4 +1,4 @@
-package com.dev.kleber.github.getUser.repository
+package com.dev.kleber.github.getUser.repository.getUser
 
 interface SearchUserRepository {
 

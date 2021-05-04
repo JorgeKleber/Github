@@ -1,9 +1,9 @@
-package com.dev.kleber.github.getUser.repository.impl.remoteImpl
+package com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl
 
 
 import com.dev.kleber.github.getUser.data.User
 import com.dev.kleber.github.getUser.network.SearchUserAPI
-import com.dev.kleber.github.getUser.repository.SearchUserRepository
+import com.dev.kleber.github.getUser.repository.getUser.SearchUserRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
