@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface PullRepositoryAPI {
     @GET("/repos/{owner}/{repo}/pulls")
-    fun searchPullRequest(@Path("owner") onwerName : String,
+    fun searchPullRequest(@Path("owner") ownerName : String,
                           @Path("repo") repositoryName : String) : Call<List<Pull>>
 
 }

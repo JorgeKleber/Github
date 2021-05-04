@@ -5,11 +5,12 @@ import com.dev.kleber.github.pullRequest.data.Pull
 import com.dev.kleber.github.pullRequest.repository.pullRequest.PullRepository
 
 class PullRequestUseCaseImpl (
-    var pullRepository: PullRepository
+    //private pq não enxerga do use case pra cima
+    private var pullRepository : PullRepository
         ) : PullRequestUseCase, PullRequestCallBack {
 
-    override fun getPullRequest(onwer : String, user : String) {
-        pullRepository.getPull(onwer,user, this)
+    override fun getPullRequest(onwer : String, repo : String) {
+        pullRepository.getPull(onwer,repo, this)
     }
     override fun sucess(result: List<Pull>) {
 
