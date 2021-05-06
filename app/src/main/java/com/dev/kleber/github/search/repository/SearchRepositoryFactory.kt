@@ -1,6 +1,5 @@
 package com.dev.kleber.github.search.repository
 
-import com.dev.kleber.github.search.network.ApiFactory
 import com.dev.kleber.github.search.network.SearchRepositoryAPI
 import com.dev.kleber.github.search.repository.search.SearchRepository
 import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl

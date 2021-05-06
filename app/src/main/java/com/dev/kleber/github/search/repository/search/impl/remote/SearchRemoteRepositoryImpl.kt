@@ -1,6 +1,5 @@
 package com.dev.kleber.github.search.repository.search.impl.remote
 
-import android.util.Log
 import com.dev.kleber.github.search.callback.SearchRepoCallback
 import com.dev.kleber.github.search.data.SearchResult
 import com.dev.kleber.github.search.network.SearchRepositoryAPI
@@ -14,9 +13,10 @@ class SearchRemoteRepositoryImpl(
     )
     : SearchRepository {
 
-
-
-    override fun searchRepo( language: String, sort: String, pageNumber: Int, callback : SearchRepoCallback ) {
+    override fun searchRepo( language: String,
+                             sort: String,
+                             pageNumber: Int,
+                             callback : SearchRepoCallback ) {
 
         service
             .searchRepositories(language, sort, pageNumber)
@@ -24,14 +24,12 @@ class SearchRemoteRepositoryImpl(
                 override fun onResponse(
                     call: Call<SearchResult>,
                     response: Response<SearchResult>
-                ) {
+                ){
                     callback.success(response.body()?.list ?: emptyList())
                 }
-
                 override fun onFailure(call: Call<SearchResult>, t: Throwable) {
                     callback.error()
                 }
             } )
-
     }
 }

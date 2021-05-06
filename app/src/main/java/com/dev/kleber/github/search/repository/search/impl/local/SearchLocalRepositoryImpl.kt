@@ -5,8 +5,9 @@ import com.dev.kleber.github.search.repository.search.SearchRepository
 
 class SearchLocalRepositoryImpl : SearchRepository {
 
-    override fun searchRepo(language: String, sort: String, pageNumber: Int, callback : SearchRepoCallback) {
-
+    override fun searchRepo(language: String,
+                            sort: String,
+                            pageNumber: Int,
+                            callback : SearchRepoCallback) {
     }
-
 }
