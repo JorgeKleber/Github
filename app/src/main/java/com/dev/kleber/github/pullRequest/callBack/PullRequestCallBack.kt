@@ -4,6 +4,6 @@ import com.dev.kleber.github.pullRequest.data.Pull
 
 interface PullRequestCallBack {
 
-    fun sucesso(result : List<Pull>)
+    fun sucess(result : List<Pull>)
     fun error()
 }

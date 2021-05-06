@@ -2,7 +2,7 @@ package com.dev.kleber.github.pullRequest.data
 
 import com.google.gson.annotations.SerializedName
 
-class Pull(
+data class Pull(
 
     @SerializedName("id")
     val id : Int,
@@ -10,5 +10,4 @@ class Pull(
     val title : String,
     @SerializedName("body")
     val body : String
-
  )

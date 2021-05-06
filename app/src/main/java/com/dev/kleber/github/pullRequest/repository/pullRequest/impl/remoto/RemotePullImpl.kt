@@ -2,7 +2,6 @@ package com.dev.kleber.github.pullRequest.repository.pullRequest.impl.remoto
 
 import com.dev.kleber.github.pullRequest.callBack.PullRequestCallBack
 import com.dev.kleber.github.pullRequest.data.Pull
-import com.dev.kleber.github.pullRequest.data.PullResult
 import com.dev.kleber.github.pullRequest.network.PullRepositoryAPI
 import com.dev.kleber.github.pullRequest.repository.pullRequest.PullRepository
 import retrofit2.Call
@@ -13,19 +12,17 @@ class RemotePullImpl (var pullRepo : PullRepositoryAPI) : PullRepository {
 
     override fun getPull(owner: String, repositoryName: String, callback: PullRequestCallBack) {
         pullRepo
-            .pullRequestRepository(owner, repositoryName)
-            .enqueue(object : Callback<PullResult>{
+            .searchPullRequest(owner, repositoryName)
+            .enqueue(object : Callback<List<Pull>>{
                 override fun onResponse(
-                    call: Call<PullResult>,
-                    response: Response<PullResult>
+                    call: Call<List<Pull>>,
+                    response: Response<List<Pull>>
                 ) {
-                    callback.sucesso(response.body()?.result ?: emptyList())
+                    callback.sucess(response.body() ?: emptyList())
                 }
-
-                override fun onFailure(call: Call<PullResult>, t: Throwable) {
+                override fun onFailure(call: Call<List<Pull>>, t: Throwable) {
                     callback.error()
                 }
-            }
+            })
     }
-
 }
