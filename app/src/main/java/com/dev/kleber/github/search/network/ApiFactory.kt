@@ -4,7 +4,7 @@ import com.dev.kleber.github.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiFactory {
+object ApiFactory {
 
     fun createSearchRepositoryAPI() : SearchRepositoryAPI {
 
