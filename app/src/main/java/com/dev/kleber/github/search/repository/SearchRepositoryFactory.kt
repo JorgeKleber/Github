@@ -1,5 +1,6 @@
 package com.dev.kleber.github.search.repository
 
+import com.dev.kleber.github.search.callback.SearchRepoCallback
 import com.dev.kleber.github.search.network.ApiFactory
 import com.dev.kleber.github.search.network.SearchRepositoryAPI
 import com.dev.kleber.github.search.repository.search.SearchRepository
@@ -18,3 +19,8 @@ object SearchRepositoryFactory {
         return impl
     }
 }
+//  S - single responsability (Responsabilidade única)
+//  O - Open Closed principle (Princípio do aberto e fechado)
+//  L - Liskov substitution principle (Princípio de substituição de Liskov)
+//  I - Interface segregation principle (Pincípio da segregação de interface)
+//  D - Dependency inversion principle (Princípio da inversão de dependência)

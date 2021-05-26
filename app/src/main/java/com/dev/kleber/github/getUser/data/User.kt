@@ -11,3 +11,8 @@ class User(
     @SerializedName("name")
     val name: String
 )
+
+fun User?.isValid() : Boolean{
+
+    return true
+}
