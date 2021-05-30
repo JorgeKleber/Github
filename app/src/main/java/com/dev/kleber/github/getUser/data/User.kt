@@ -2,7 +2,7 @@ package com.dev.kleber.github.getUser.data
 
 import com.google.gson.annotations.SerializedName
 
-class User(
+data class User(
 
     @SerializedName("id")
     val id : Int,

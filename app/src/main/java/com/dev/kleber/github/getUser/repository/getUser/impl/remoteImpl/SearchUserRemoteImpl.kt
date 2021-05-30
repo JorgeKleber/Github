@@ -32,7 +32,7 @@ class SearchUserRemoteImpl(
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
-
+                    callback.error()
                 }
             })
     }
