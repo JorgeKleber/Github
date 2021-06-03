@@ -4,9 +4,17 @@ interface SearchContract {
 
     interface View {
         fun showResults()
+        fun hideResults()
+        fun showLoading()
+        fun hideLoading()
+        fun showNetworkError()
+        fun hideNetworkError()
+        fun showEmptyState() //kinjonum
+        fun hideEmptyState()
     }
 
     interface Presenter {
-        fun load()
+        fun search(query : String)
+        fun loadingMore()
     }
 }

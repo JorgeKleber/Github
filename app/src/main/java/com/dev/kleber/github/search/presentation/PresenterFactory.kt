@@ -8,7 +8,7 @@ import com.dev.kleber.github.search.usecase.UsecaseFactory
 
 object PresenterFactory {
 
-    fun createSearchPresenter( view: SearchContract.View) : SearchPresenter {
+    fun createSearchPresenter( view: SearchContract.View) : SearchContract.Presenter {
 
         val api = ApiFactory.createSearchRepositoryAPI()
         val searchRepo = SearchRepositoryFactory.createSearchRepository(api)
