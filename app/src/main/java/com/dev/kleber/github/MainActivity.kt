@@ -4,7 +4,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.dev.kleber.github.getUser.network.SearchUserApiFactory
+import com.dev.kleber.github.getUser.repository.SearchUserRepoFactory
+import com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl.SearchUserRepositoryImpl
+import com.dev.kleber.github.getUser.usecase.UseCaseImpl
+import com.dev.kleber.github.pullRequest.network.PullRequestAPIFactory
+import com.dev.kleber.github.pullRequest.repository.PullRequestRepoFactory
+import com.dev.kleber.github.pullRequest.usecase.PullRequestUseCaseImpl
 import com.dev.kleber.github.search.network.ApiFactory
 import com.dev.kleber.github.search.repository.SearchRepositoryFactory
 import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl
@@ -21,16 +31,40 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        var searchRepoApi = ApiFactory.createSearchRepositoryAPI()
-        var searchRepository = SearchRepositoryFactory.createSearchRepository(searchRepoApi)
+        var list = findViewById<RecyclerView>(R.id.my_list)
+        var items = listOf("Brasil", "Canada", "Portugal")
 
-        var impl = SearchRepoUseCase.Impl(searchRepository)
+        var adapter = ListAdapter(items, object:ItemClickCallback{
+            override fun itemClick(position: Int) {
+
+                Toast.makeText(this@MainActivity,items[position], Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        list.adapter = adapter
+
+        var api = SearchUserApiFactory.createSearchUserApi()
+        var repository = SearchUserRepoFactory.createSearchUserRepo(api)
+        var getUserImpl = UseCaseImpl(repository)
+
+//        var searchRepoApi = ApiFactory.createSearchRepositoryAPI()
+//        var searchRepository = SearchRepositoryFactory.createSearchRepository(searchRepoApi)
+//
+//        var impl = SearchRepoUseCase.Impl(searchRepository)
+
+//        var pullApi = PullRequestAPIFactory.createPullRequestAPI()
+//        var repository = PullRequestRepoFactory.createPullRequestRepo(pullApi)
+//
+//        var impl = PullRequestUseCaseImpl(repository)
 
         val function: (v: View) -> Unit = { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
-            impl.searchRepo("language:kotlin","stars")
+            //impl.searchRepo("language:kotlin","stars")
+            //impl.getPullRequest("JorgeKleber","github")
+            getUserImpl.searchUser("Jorge Kleber")
+
         }
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener(function)
     }
