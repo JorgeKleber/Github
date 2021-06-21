@@ -9,13 +9,14 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import io.mockk.verifyAll
+import org.hamcrest.core.Every
 import org.junit.Before
 import org.junit.Test
 
 class SearchPresenterTest {
 
-    var view = mockk<SearchContract.View>()
-    var usecase = mockk<SearchRepoUseCase>()
+    var view = mockk<SearchContract.View>(relaxed = true)
+    var usecase = mockk<SearchRepoUseCase>(relaxed = true)
     lateinit var presenter : SearchContract.Presenter
 
     @Before
@@ -30,8 +31,12 @@ class SearchPresenterTest {
 
         presenter.search("language:kotlin")
 
-        verifyAll { view.showLoading() }
-
+        verifyAll {
+            view.showLoading()
+            view.hideNetworkError()
+            view.hideEmptyState()
+            view.hideResults()
+        }
     }
 
     @Test(expected = NotImplementedError::class)

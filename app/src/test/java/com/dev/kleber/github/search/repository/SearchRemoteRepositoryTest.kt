@@ -34,7 +34,9 @@ class SearchRemoteRepositoryTest {
 
         var emptyList = emptyList<Repo>()
 
-        every { api.searchRepositories("language:kotlin", "stars", 1) } returns Calls.response(SearchResult(emptyList))
+        every {
+            api.searchRepositories("language:kotlin", "stars", 1)
+        } returns Calls.response(SearchResult(emptyList))
 
         remoteRepository.searchRepo("language:kotlin", "stars", 1,callback)
 
@@ -46,7 +48,9 @@ class SearchRemoteRepositoryTest {
 
         var emptyList = emptyList<Repo>()
 
-        every { api.searchRepositories("language:kotlin", "stars", 1) } returns Calls.failure(Throwable())
+        every {
+            api.searchRepositories("language:kotlin", "stars", 1)
+        } returns Calls.failure(Throwable())
 
         remoteRepository.searchRepo("language:kotlin", "stars", 1,callback)
 
