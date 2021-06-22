@@ -5,7 +5,7 @@ import com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl.SearchUs
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object SearchUserApiFactory {
+object GetUserApiFactory {
 
     fun createSearchUserApi() : SearchUserAPI {
         val retrofit = Retrofit.Builder()

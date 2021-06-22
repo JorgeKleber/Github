@@ -4,19 +4,11 @@ import com.dev.kleber.github.getUser.callback.GetUserCallback
 import com.dev.kleber.github.getUser.data.User
 import com.dev.kleber.github.getUser.repository.getUser.SearchUserRepository
 
-class UseCaseImpl(
+class GetUserUseCaseImpl(
     private var searchUserRepo : SearchUserRepository
-    ) : SearchUserUseCase, GetUserCallback {
+    ) : GetUserUseCase {
 
-    override fun searchUser(userName: String) {
-        searchUserRepo.searchUser(userName, this)
-    }
-
-    override fun sucess(result: User) {
-
-    }
-
-    override fun error() {
-
+    override fun searchUser(userName: String, callback: GetUserCallback) {
+        searchUserRepo.searchUser(userName, callback)
     }
 }

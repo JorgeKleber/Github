@@ -6,21 +6,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.dev.kleber.github.getUser.network.SearchUserApiFactory
-import com.dev.kleber.github.getUser.repository.SearchUserRepoFactory
-import com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl.SearchUserRepositoryImpl
-import com.dev.kleber.github.getUser.usecase.UseCaseImpl
-import com.dev.kleber.github.pullRequest.network.PullRequestAPIFactory
-import com.dev.kleber.github.pullRequest.repository.PullRequestRepoFactory
-import com.dev.kleber.github.pullRequest.usecase.PullRequestUseCaseImpl
-import com.dev.kleber.github.search.network.ApiFactory
-import com.dev.kleber.github.search.repository.SearchRepositoryFactory
-import com.dev.kleber.github.search.repository.search.impl.SearchRepositoryImpl
-import com.dev.kleber.github.search.repository.search.impl.local.SearchLocalRepositoryImpl
-import com.dev.kleber.github.search.repository.search.impl.remote.SearchRemoteRepositoryImpl
-import com.dev.kleber.github.search.usecase.SearchRepoUseCase
+import com.dev.kleber.github.getUser.network.GetUserApiFactory
+import com.dev.kleber.github.getUser.repository.GetUserRepoFactory
+import com.dev.kleber.github.getUser.usecase.GetUserUseCaseImpl
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -43,9 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         list.adapter = adapter
 
-        var api = SearchUserApiFactory.createSearchUserApi()
-        var repository = SearchUserRepoFactory.createSearchUserRepo(api)
-        var getUserImpl = UseCaseImpl(repository)
+        var api = GetUserApiFactory.createSearchUserApi()
+        var repository = GetUserRepoFactory.createSearchUserRepo(api)
+        var getUserImpl = GetUserUseCaseImpl(repository)
 
 //        var searchRepoApi = ApiFactory.createSearchRepositoryAPI()
 //        var searchRepository = SearchRepositoryFactory.createSearchRepository(searchRepoApi)

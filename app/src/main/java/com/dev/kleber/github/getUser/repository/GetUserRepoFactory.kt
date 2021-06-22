@@ -5,7 +5,7 @@ import com.dev.kleber.github.getUser.repository.getUser.SearchUserRepository
 import com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl.SearchUserRemoteImpl
 import com.dev.kleber.github.getUser.repository.getUser.impl.remoteImpl.SearchUserRepositoryImpl
 
-object SearchUserRepoFactory {
+object GetUserRepoFactory {
 
     fun createSearchUserRepo(userRepoObj : SearchUserAPI) : SearchUserRepository {
 
